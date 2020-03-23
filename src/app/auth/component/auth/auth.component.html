@@ -1,0 +1,72 @@
+<div class="limiter">
+  <div class="container-login">
+    <mat-card>
+      <mat-card-title>
+        {{title}}
+      </mat-card-title>
+      <mat-card-content>
+        <form
+          class="example-form"
+          [formGroup]="userForm"
+          (ngSubmit)="submit()"
+        >
+          <mat-form-field class="example-full-width">
+            <mat-label>Email</mat-label>
+            <input
+              matInput
+              placeholder="Email"
+              formControlName="email"
+              type="text"
+            />
+            <mat-error
+              *ngIf="userFormErrors.email.invalid &&
+                userFormErrors.email.touched">
+              Email Is Required
+            </mat-error>
+          </mat-form-field>
+          <mat-form-field class="example-full-width">
+            <mat-label>Password</mat-label>
+            <input
+              matInput
+              placeholder="Password"
+              formControlName="password"
+              type="password"
+            />
+            <mat-error
+              *ngIf="
+              userFormErrors.password.invalid &&
+              userFormErrors.password.touched
+              "
+            >
+              Password Is Required
+            </mat-error>
+          </mat-form-field>
+          <div>
+            <button class="btn-block"
+              mat-raised-button
+              type="submit"
+              color="accent"
+              [disabled]="userForm.invalid">
+              {{title}}
+            </button>
+            <!-- <a (click)="forgotPasswordHandler()">Forgot Password?</a> -->
+            <a href="/api/auth/google" mat-raised-button color="accent" class="btn btn-block btn-social btn-google">
+              Login With Google
+            </a>
+            <a href="/api/auth/github" mat-raised-button color="accent" class="btn btn-block btn-social btn-github">
+              Login With Github
+            </a>
+          </div>
+        </form>
+      </mat-card-content>
+      <div class="alternative" *ngIf="title === 'Login' ">
+        <p>Dont't have an account?</p>
+        <button mat-raised-button color="accent" [routerLink]="['/signup']" class="btn-block">Signup</button>
+      </div>
+      <div class="alternative" *ngIf="title === 'Signup' ">
+        <p>Have an account?</p>
+        <button mat-raised-button color="accent" [routerLink]="['/login']" class="btn-block">Login</button>
+      </div>
+    </mat-card>
+  </div>
+</div>

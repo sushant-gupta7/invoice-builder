@@ -1,0 +1,45 @@
+<mat-card>
+    <mat-card-title>
+        {{selectedInvoice?.item | titlecase}}
+    </mat-card-title>
+    <mat-card-content>
+        <table>
+            <tr>
+                <td class="column-title">CLIENT NAME:</td>
+                <td>{{selectedInvoice?.client?.firstName}}&nbsp;{{selectedInvoice?.client?.lastName}}</td>
+            </tr>
+            <tr>
+                <td class="column-title">CLIENT EMAIL:</td>
+                <td>{{selectedInvoice?.client?.email}}</td>
+            </tr>
+            <tr>
+                <td class="column-title">DATE:</td>
+                <td>{{selectedInvoice?.date | date:'dd/MMM/yy'}}</td>
+            </tr>
+            <tr>
+                <td class="column-title">DUE:</td>
+                <td>{{selectedInvoice?.due | date:'dd/MMM/yy'}}</td>
+            </tr>
+            <tr>
+                <td class="column-title">QTY:</td>
+                <td>{{selectedInvoice?.qty}}</td>
+            </tr>
+            <tr>
+                <td class="column-title">RATE:</td>
+                <td>{{selectedInvoice?.rate}}</td>
+            </tr>
+            <tr>
+                <td class="column-title">TAX:</td>
+                <td>{{selectedInvoice?.tax}}</td>
+            </tr>
+            <tr>
+                <td class="column-title">TOTAL:</td>
+                <td>Rs. {{selectedInvoice?.qty * selectedInvoice?.rate}}</td>
+            </tr>
+        </table>
+    </mat-card-content>
+    <mat-card-actions>
+        <button mat-raised-button [routerLink]="['/dashboard','invoices',id]">EDIT</button>
+        <button mat-raised-button>DOWNLOAD</button>
+    </mat-card-actions>
+</mat-card>

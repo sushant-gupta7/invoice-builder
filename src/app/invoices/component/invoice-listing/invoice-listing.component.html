@@ -1,3 +1,81 @@
-<mat-card>
-    <h1>Invoice Listing</h1>
-</mat-card>
+<mat-toolbar>
+  <mat-form-field color="accent">
+    <input matInput type="text" (keyup)="filterInvoice($event.target.value)" placeholder="Filter Text"/>
+  </mat-form-field>
+  <h3>Invoices</h3>
+  <div class="menu-bar">
+    <button mat-button (click)="navigateToInvoiceForm()">New Invoices</button>
+  </div>
+</mat-toolbar>
+<div class="example-container mat-elevation-z8">
+  <div class="mat-elevation-z8">
+    <div class="loading-shade" *ngIf="isResultsLoading">
+      <mat-spinner *ngIf="isResultsLoading" color="accent"></mat-spinner>
+    </div>
+  </div>
+  <table mat-table [dataSource]="dataSource" #table matSort>
+    <ng-container matColumnDef="client">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Client</th>
+      <td mat-cell *matCellDef="let invoice">
+        {{ invoice?.client?.firstName | titlecase }}&nbsp;{{ invoice?.client?.lastName | titlecase }}
+      </td>
+    </ng-container>
+    <ng-container matColumnDef="item">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Item</th>
+      <td mat-cell *matCellDef="let invoice">
+        {{ invoice?.item | titlecase }}
+      </td>
+    </ng-container>
+    <ng-container matColumnDef="date">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Date</th>
+      <td mat-cell *matCellDef="let invoice">
+        {{ invoice?.date | date: "dd/MMM/yy" }}
+      </td>
+    </ng-container>
+    <ng-container matColumnDef="due">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Due</th>
+      <td mat-cell *matCellDef="let invoice">
+        {{ invoice?.due | date: "dd/MMM/yy" }}
+      </td>
+    </ng-container>
+    <ng-container matColumnDef="action">
+      <th mat-header-cell *matHeaderCellDef>Action</th>
+      <td mat-cell *matCellDef="let invoice; let i = index">
+        <button
+          mat-icon-button
+          [matMenuTriggerFor]="menu"
+          aria-label="Example icon-button with a menu"
+        >
+          <mat-icon>more_vert</mat-icon>
+        </button>
+        <mat-menu #menu="matMenu">
+          <button mat-menu-item (click)="viewInvoice(invoice?._id)">
+            <mat-icon>pageview</mat-icon>
+            <span>View</span>
+          </button>
+          <button mat-menu-item (click)="editInvoice(invoice?._id)">
+            <mat-icon>edit</mat-icon>
+            <span>Edit</span>
+          </button>
+          <button mat-menu-item (click)="deleteInvoice(invoice?._id, i)">
+            <mat-icon>delete</mat-icon>
+            <span>Delete</span>
+          </button>
+        </mat-menu>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+  </table>
+
+  <mat-paginator
+    #paginator
+    pageIndex="0"
+    [length]="invoiceLength"
+    [pageSize]="10"
+    [pageSizeOptions]="[5, 10, 25, 100]"
+    [showFirstLastButtons]="true"
+  >
+  </mat-paginator>
+</div>

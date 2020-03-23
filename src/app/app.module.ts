@@ -5,6 +5,11 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './shared/material/material.module';
 import { DashboardModule } from './dashboard/dashboard.module';
+import { MatDialogModule } from '@angular/material/dialog';
+import { AuthModule } from './auth/auth.module';
+import { CoreModule } from './shared/core/core.module';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HttpInterceptorService } from './shared/service/http-interceptor.service';
 
 
 @NgModule({
@@ -13,12 +18,17 @@ import { DashboardModule } from './dashboard/dashboard.module';
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
+    CoreModule,
+    AuthModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     MaterialModule,
-    DashboardModule
+    DashboardModule,
+    MatDialogModule
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  providers: [{provide:HTTP_INTERCEPTORS , useClass:HttpInterceptorService , multi:true}],
+  bootstrap: [AppComponent],
+  exports:[MatDialogModule]
 })
 export class AppModule { }

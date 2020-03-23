@@ -1,0 +1,76 @@
+<mat-card>
+  <h3>Client</h3>
+  <form class="example-form" [formGroup]="clientForm" (ngSubmit)="submit()">
+    <mat-form-field class="example-full-width">
+      <mat-label>First Name</mat-label>
+      <input
+        matInput
+        placeholder="First Name"
+        formControlName="firstName"
+        type="text"
+      />
+      <mat-error
+        *ngIf="
+          clientFormErrors.firstName.invalid &&
+          clientFormErrors.firstName.touched
+        "
+      >
+        First Name Is Required
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field class="example-full-width">
+      <mat-label>Last Name</mat-label>
+      <input
+        matInput
+        placeholder="Last Name"
+        formControlName="lastName"
+        type="text"
+      />
+      <mat-error
+        *ngIf="
+          clientFormErrors.lastName.invalid && clientFormErrors.lastName.touched
+        "
+      >
+        Last Name Is Required
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field class="example-full-width">
+      <mat-label>Email</mat-label>
+      <input
+        matInput
+        placeholder="Email"
+        formControlName="email"
+        type="email"
+      />
+      <mat-error
+        *ngIf="clientFormErrors.email.invalid && clientFormErrors.email.touched"
+      >
+        Email Is Required
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field class="example-full-width">
+      <mat-label>Mobile</mat-label>
+      <input
+        matInput
+        placeholder="Mobile"
+        formControlName="mobile"
+        type="text"
+      />
+      <mat-error
+        *ngIf="
+          clientFormErrors.mobile.invalid && clientFormErrors.mobile.touched
+        "
+      >
+        Mobile Is Required
+      </mat-error>
+    </mat-form-field>
+    <div>
+      <button mat-raised-button type="submit" color="accent" [disabled]="clientForm.invalid">
+        Save
+      </button>
+      <button mat-raised-button type="reset" *ngIf="!(selectedClient)" (click)="resetForm()">
+        Cancel
+      </button>
+    </div>
+  </form>
+</mat-card>
