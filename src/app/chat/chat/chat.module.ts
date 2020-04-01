@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { ChatComponentComponent } from '../chat-component/chat-component.component';
 import { MaterialModule } from 'src/app/shared/material/material.module';
 import { ChatService } from '../service/chat.service';
+import { FormsModule } from '@angular/forms';
 
 
 
@@ -10,7 +11,8 @@ import { ChatService } from '../service/chat.service';
   declarations: [ChatComponentComponent],
   imports: [
     CommonModule,
-    MaterialModule
+    MaterialModule,
+    FormsModule
   ],
   providers:[ChatService]
 })

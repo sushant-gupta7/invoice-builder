@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
 export class ChatService {
 
   
-  url = "http://localhost:3000";
+  url = "http://localhost:5000";
   socket;
 
   constructor() {
@@ -19,9 +19,10 @@ export class ChatService {
     this.socket.emit("new-message", message);
   }
 
-  public getMessages = () => {
+ getMessages = () => {
     return Observable.create((observer) => {
-        this.socket.on('new-message', (message) => {
+        this.socket.on('emit-message', (message) => {
+          console.log(message);
             observer.next(message);
         });
     });

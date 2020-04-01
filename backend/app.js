@@ -32,8 +32,11 @@ app.listen(PORT, () => {
 
 
 
-const io = require("socket.io").listen(4000);
+const io = require("socket.io").listen(5000);
 
-io.sockets.on("connection", function(socket) {
-  console.log(socket);
+io.on('connection', (socket) => {
+    console.log('user connected');
+    socket.on('new-message', (message) => {
+        io.emit('emit-message',message);
+      });
 });
