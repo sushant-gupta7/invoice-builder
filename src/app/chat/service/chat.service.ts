@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
 export class ChatService {
 
   
-  url = "http://localhost:5000";
+  url = "http://"+window.location.hostname+":5000";
   socket;
 
   constructor() {

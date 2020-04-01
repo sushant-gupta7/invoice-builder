@@ -15,7 +15,7 @@ mongoose
     console.log(err);
   });
 
-const PORT = devConfig.port;
+const PORT = process.env.port || devConfig.port;
 const app = express();
 setGlobalMiddleware(app);
 app.use("/api", routes);
