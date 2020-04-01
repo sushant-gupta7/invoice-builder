@@ -1,0 +1,41 @@
+<!-- <h3>Realtime Chat Application</h3>
+<mat-card class="example-container">
+    <mat-form-field>
+      <mat-label>Username</mat-label>
+      <input matInput type="text">
+    </mat-form-field>
+    <br>
+    <mat-form-field>
+      <mat-label>Select Room</mat-label>
+      <mat-select>
+        <mat-option value="lobby">Lobby</mat-option>
+        <mat-option value="hall">Hall</mat-option>
+        <mat-option value="deluxe">Deluxe</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <br>
+    
+    <button
+    mat-raised-button
+    type="submit"
+    color="accent">
+    Join
+  </button>
+    <button
+    mat-raised-button
+    type="submit"
+    color="accent">
+    Leave
+  </button>
+</mat-card>
+<br>
+<mat-card>
+
+</mat-card> -->
+
+<div *ngFor="let message of messages">
+    {{message}}
+</div>
+
+<input [(ngModel)]="message" (keyup)="$event.keyCode == 13 && sendMessage()" />
+<button (click)="sendMessage()">Send</button>

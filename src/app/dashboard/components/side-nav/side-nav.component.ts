@@ -17,6 +17,7 @@ export class SideNavComponent implements OnInit {
   links = [
     {name:'Invoices' , url: 'invoices'},
     {name:'Clients' , url: 'clients'},
+    {name:'Live Chat' , url: 'chat'},
   ]
   constructor(changeDetectorRef: ChangeDetectorRef, media: MediaMatcher
     ) {

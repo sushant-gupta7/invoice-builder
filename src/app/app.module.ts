@@ -10,11 +10,11 @@ import { AuthModule } from './auth/auth.module';
 import { CoreModule } from './shared/core/core.module';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { HttpInterceptorService } from './shared/service/http-interceptor.service';
-
+import { ChatModule } from './chat/chat/chat.module';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
   ],
   imports: [
     BrowserModule,
@@ -25,7 +25,8 @@ import { HttpInterceptorService } from './shared/service/http-interceptor.servic
     BrowserAnimationsModule,
     MaterialModule,
     DashboardModule,
-    MatDialogModule
+    MatDialogModule,
+    ChatModule
   ],
   providers: [{provide:HTTP_INTERCEPTORS , useClass:HttpInterceptorService , multi:true}],
   bootstrap: [AppComponent],
