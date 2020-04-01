@@ -8,14 +8,19 @@ import { Invoice } from "../models/invoice";
 })
 export class InvoiceService {
   headers = {
-    "Content-Type": "application/json;charset=utf-8",
+    "Content-Type": "application/json",
     "Accept": "application/json",
-    "Authorization":  `bearer ${localStorage.getItem('token')}`}
+    'Authorization': `bearer ${localStorage.getItem("token")}`
+  };
+  headersFormData = {
+    "Content-Type": "application/x-www-form-urlencoded",
+    'Authorization': `bearer ${localStorage.getItem("token")}`,
+  };
 
   BASE_URL = "http://localhost:3000/api/invoices";
   constructor(private http: HttpClient) {}
 
-  getInvoices(page = 1, perPage = 10, filter ,sortField, sortDir) {
+  getInvoices(page = 1, perPage = 10, filter, sortField, sortDir) {
     if (sortField && sortDir) {
       var apiQueryParams =
         this.BASE_URL +
@@ -29,11 +34,7 @@ export class InvoiceService {
         sortDir;
     } else {
       var apiQueryParams =
-        this.BASE_URL +
-         "?page=" +
-          page + 
-          "&perPage=" + 
-          perPage;
+        this.BASE_URL + "?page=" + page + "&perPage=" + perPage;
     }
     if (filter) {
       var apiQueryParams =
@@ -43,14 +44,10 @@ export class InvoiceService {
         "&perPage=" +
         perPage +
         "&filter=" +
-        filter
+        filter;
     } else {
       var apiQueryParams =
-        this.BASE_URL +
-         "?page=" +
-          page + 
-          "&perPage=" + 
-          perPage;
+        this.BASE_URL + "?page=" + page + "&perPage=" + perPage;
     }
     return fetch(apiQueryParams, {
       method: "GET",
@@ -61,11 +58,18 @@ export class InvoiceService {
   }
 
   addInvoices(invoice) {
+    const data = new URLSearchParams();
+    for (const pair of invoice) {
+      data.append(pair[0], pair[1]);
+      console.log(pair)
+    }
+    console.log(data);
     return fetch(this.BASE_URL, {
       method: "POST",
-      headers: this.headers,
-      body: JSON.stringify(invoice)
+      headers: this.headersFormData,
+      body: data,
     }).then(data => {
+      console.log(data)
       return data.json();
     });
   }
@@ -91,7 +95,7 @@ export class InvoiceService {
   updateInvoice(invoiceID, invoiceObject) {
     return fetch(this.BASE_URL + "/update/" + invoiceID, {
       method: "PUT",
-      headers:  this.headers,
+      headers: this.headers,
       body: JSON.stringify(invoiceObject)
     }).then(data => {
       return data.json();

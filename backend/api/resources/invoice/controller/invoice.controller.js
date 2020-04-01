@@ -1,5 +1,7 @@
 import Invoices from "../../invoice/model/invoice.model";
 import invoiceService from "../../invoice/service/invoice.service";
+const { S3Upload, upload, IMG_DIR_CONSTS } = require("../../../config/utils/uploadimage");
+// const { profileImage } = require('../../../config/utils/uploadimage'); 
 
 export default {
   findAll(req, res) {
@@ -33,27 +35,34 @@ export default {
       });
   },
   async create(req, res) {
+    console.log('REQUESTTTTTTTTTTTTTT' , req);
     const { value, error } = invoiceService.validateInvoiceCreateSchema(
       req.body
     );
     if (error && error.details) {
+      console.log(error)
       return res.status(400).json({ error: error });
     }
-    await Invoices.create(value)
-      .then(invoice => {
-        invoice
-          .populate("client")
-          .execPopulate()
-          .then(invoice => {
-            return res.status(200).json({ data: invoice });
-          });
-      })
-      .catch(err => {
-        console.log(err);
-        return res
-          .status(500)
-          .json({ message: "Internal Server Error", error: err });
-      });
+    if (req.files) {
+      console.log('FILEEEEEEE' , req.files)
+      // result.data.invoice_image = await S3Upload(IMG_DIR_CONSTS.TEST, req.file);
+    }
+    // console.log(req);
+    // await Invoices.create(value)
+    //   .then(invoice => {
+    //     invoice
+    //       .populate("client")
+    //       .execPopulate()
+    //       .then(invoice => {
+    //         return res.status(200).json({ data: invoice });
+    //       });
+    //   })
+    //   .catch(err => {
+    //     console.log(err);
+    //     return res
+    //       .status(500)
+    //       .json({ message: "Internal Server Error", error: err });
+    //   });
   },
   update(req, res) {
     const { value, error } = invoiceService.validateInvoiceUpdateSchema(

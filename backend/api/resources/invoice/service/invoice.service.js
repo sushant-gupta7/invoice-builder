@@ -8,7 +8,8 @@ export default {
       qty: joi.number().required(),
       tax: joi.number().optional(),
       rate: joi.number().optional(),
-      client:joi.string().optional()
+      client:joi.string().optional(),
+      image:joi.string().optional(),
     });
     const { error, value } = schema.validate(body);
     if (error && error.details) {

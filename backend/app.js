@@ -11,6 +11,7 @@ mongoose.connect(devConfig.database,
 ).catch(err=>{
     console.log(err)
 });
+
 const PORT = devConfig.port;
 const app = express();
 setGlobalMiddleware(app);
@@ -22,13 +23,15 @@ app.use((req,res,next)=>{
     next(error);
 })
 
-app.use((error,req,res,next)=>{
-    return res.json({
-        error:{
-            message:error.message 
-        }
-    })
-})
+// app.use((error,req,res,next)=>{
+//     return res.json({
+//         error:{
+//             message:error.message 
+//         }
+//     })
+// })
+// app.set('port', (5000));
+
 
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);

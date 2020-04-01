@@ -1,18 +1,41 @@
 <mat-card>
-  <h3>Invoices </h3>
+  <h3>Invoices</h3>
   <form class="example-form" [formGroup]="invoiceForm" (ngSubmit)="submit()">
+    <mat-card style="width:max-content">
+      <mat-card-header>
+        <div mat-card-avatar class="example-header-image"></div>
+        <mat-card-title>Select Image</mat-card-title>
+      </mat-card-header>
+      <img *ngIf="!filenameBannerImage"
+        mat-card-image
+        src="https://binsar.s3.ap-south-1.amazonaws.com/default-images/profile-picture.png"
+        style="height: 150px;width: 200px;margin-left: 5px;"
+      />
+
+      <img *ngIf="filenameBannerImage" [src]="filenameBannerImage" alt="{{filenameBannerImage}}"
+      class="img-thumbnail" style="height: 150px;width: 200px;margin-left: 5px;" />
+      <mat-card-actions>
+        <input type="text" (change)="fileSelected($event)" type="file">
+      </mat-card-actions>
+    </mat-card>
+
     <mat-form-field class="example-full-width">
       <mat-label>Select Client</mat-label>
-      <mat-select  formControlName="client">
-        <mat-option *ngFor="let client of allClients ; let i = index ;" [value]="allClients[i]?._id">
-          {{client?.firstName}}&nbsp;{{client?.lastName}}
+      <mat-select formControlName="client">
+        <mat-option
+          *ngFor="let client of allClients; let i = index"
+          [value]="allClients[i]?._id"
+        >
+          {{ client?.firstName }}&nbsp;{{ client?.lastName }}
         </mat-option>
       </mat-select>
     </mat-form-field>
     <mat-form-field class="example-full-width">
       <mat-label>Item</mat-label>
       <input matInput placeholder="Item" formControlName="item" type="text" />
-      <mat-error *ngIf="invoiceFormErrors.item.invalid && invoiceFormErrors.item.touched">
+      <mat-error
+        *ngIf="invoiceFormErrors.item.invalid && invoiceFormErrors.item.touched"
+      >
         Item Is Required
       </mat-error>
     </mat-form-field>
@@ -21,23 +44,34 @@
       <input matInput [matDatepicker]="date" formControlName="date" />
       <mat-datepicker-toggle matSuffix [for]="date"></mat-datepicker-toggle>
       <mat-datepicker #date></mat-datepicker>
-      <mat-error *ngIf="invoiceFormErrors.date.invalid && invoiceFormErrors.date.touched">
+      <mat-error
+        *ngIf="invoiceFormErrors.date.invalid && invoiceFormErrors.date.touched"
+      >
         Date Is Required
       </mat-error>
     </mat-form-field>
     <mat-form-field class="example-full-width">
       <mat-label>Due</mat-label>
-      <input matInput [matDatepicker]="due" formControlName="due"/>
+      <input matInput [matDatepicker]="due" formControlName="due" />
       <mat-datepicker-toggle matSuffix [for]="due"></mat-datepicker-toggle>
       <mat-datepicker #due></mat-datepicker>
-      <mat-error *ngIf="invoiceFormErrors.due.invalid && invoiceFormErrors.due.touched">
+      <mat-error
+        *ngIf="invoiceFormErrors.due.invalid && invoiceFormErrors.due.touched"
+      >
         Due Date Is Required
       </mat-error>
     </mat-form-field>
     <mat-form-field class="example-full-width">
       <mat-label>Quantity</mat-label>
-      <input matInput placeholder="Quantity" formControlName="qty" type="number"/>
-      <mat-error *ngIf="invoiceFormErrors.qty.invalid && invoiceFormErrors.qty.touched">
+      <input
+        matInput
+        placeholder="Quantity"
+        formControlName="qty"
+        type="number"
+      />
+      <mat-error
+        *ngIf="invoiceFormErrors.qty.invalid && invoiceFormErrors.qty.touched"
+      >
         Quantity Is Required
       </mat-error>
     </mat-form-field>
@@ -49,9 +83,23 @@
       <mat-label>Tax</mat-label>
       <input matInput placeholder="Tax" formControlName="tax" type="number" />
     </mat-form-field>
-    <div >
-        <button mat-raised-button type="submit" color="accent" [disabled]="invoiceForm.invalid">Save</button>
-        <button mat-raised-button type="reset" (click)="resetForm()" *ngIf="!(selectedInvoice)">Cancel</button>
+    <div>
+      <button
+        mat-raised-button
+        type="submit"
+        color="accent"
+        [disabled]="invoiceForm.invalid"
+      >
+        Save
+      </button>
+      <button
+        mat-raised-button
+        type="reset"
+        (click)="resetForm()"
+        *ngIf="!selectedInvoice"
+      >
+        Cancel
+      </button>
     </div>
   </form>
 </mat-card>

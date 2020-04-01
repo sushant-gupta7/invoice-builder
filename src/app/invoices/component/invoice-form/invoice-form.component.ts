@@ -20,6 +20,8 @@ export class InvoiceFormComponent implements OnInit {
   id: any;
   selectedInvoice: any;
   allClients: any[] = [];
+  invoiceImage: any;
+  filenameBannerImage: string | ArrayBuffer;
   constructor(
     private formBuilder: FormBuilder,
     private invoiceService: InvoiceService,
@@ -102,26 +104,36 @@ export class InvoiceFormComponent implements OnInit {
   }
 
   submit() {
+    const formData =new FormData();
     if (this.invoiceForm.invalid) {
       return;
     } else {
       Object.keys(this.invoiceForm.controls).forEach(control => {
         if (this.invoiceForm.get(control).value == "") {
           this.invoiceForm.removeControl(control);
+        } else {
+          formData.append(control,this.invoiceForm.get(control).value )
         }
       });
+      if(this.invoiceImage) {
+        formData.append('image',this.invoiceImage);
+      }
+      formData.forEach((element)=>{
+        console.log(element)
+      })
       if (this.selectedInvoice) {
         this.updateInvoice();
       } else {
-        this.addInvoice();
+        this.addInvoice(formData);
       }
     }
   }
 
-  addInvoice() {
+  addInvoice(invoiceData) {
     this.invoiceService
-      .addInvoices(this.invoiceForm.value)
+      .addInvoices(invoiceData)
       .then(data => {
+        console.log(data);
         if (data.data) {
           this.snackbar.open("Invoice Created", "Success", {
             duration: 2000
@@ -158,5 +170,17 @@ export class InvoiceFormComponent implements OnInit {
   resetForm() {
     this.invoiceForm.reset();
     this.initializeInvoiceForm();
+  }
+
+  fileSelected(event) {
+    console.log(event);
+    if (event.target.files && event.target.files[0]) {
+      var reader = new FileReader();
+      reader.readAsDataURL(event.target.files[0]); // read file as data url
+      this.invoiceImage = event.target.files[0];
+      reader.onload = (event) => { // called once readAsDataURL is completed
+        this.filenameBannerImage = event.target.result;
+      }
+    }
   }
 }

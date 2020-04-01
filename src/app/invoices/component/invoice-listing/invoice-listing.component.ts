@@ -144,7 +144,7 @@ export class InvoiceListingComponent implements OnInit, AfterViewInit {
         console.log(data);
         this.isResultsLoading = false;
         this.dataSource = data.data.docs;
-        this.invoiceLength = data.data.docs.length;
+        this.invoiceLength = data.data.total;
       })
       .catch(err => {
         console.log(err);

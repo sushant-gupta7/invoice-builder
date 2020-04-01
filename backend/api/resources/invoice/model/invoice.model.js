@@ -8,6 +8,7 @@ const InvoiceSchema = new schema({
   due: {type:Date , required:true},
   rate: {type:Number },
   tax: {type:Number},
+  invoice_image: {type:String},
   client: {
     type: mongoose.Schema.Types.ObjectId, ref: 'Client', required: false
   },
