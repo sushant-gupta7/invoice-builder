@@ -3,11 +3,11 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "node --max_old_space_size=2560 node_modules/.bin/react-scripts start ng serve --proxy-config proxy-config.json",
+    "start": "node --max_old_space_size=2560  ng serve --proxy-config proxy-config.json",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "build": "node --max_old_space_size=2560 node_modules/.bin/react-scripts build babel backend -d dist --source-maps",
+    "build": "node --max_old_space_size=2560  babel backend -d dist --source-maps",
     "serve": "node dist/app.js",
     "buildclient": "ng build",
     "runclient": "npm start",
