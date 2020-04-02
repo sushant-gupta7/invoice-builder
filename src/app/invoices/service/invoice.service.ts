@@ -17,7 +17,7 @@ export class InvoiceService {
     'Authorization': `bearer ${localStorage.getItem("token")}`,
   };
 
-  BASE_URL = "http://localhost:3000/api/invoices";
+  BASE_URL = "/api/invoices";
   constructor(private http: HttpClient) {}
 
   getInvoices(page = 1, perPage = 10, filter, sortField, sortDir) {

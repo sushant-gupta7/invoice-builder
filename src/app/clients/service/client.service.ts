@@ -10,7 +10,7 @@ export class ClientService {
     "Accept": "application/json",
     "Authorization":  `bearer ${localStorage.getItem('token')}`
   };
-  BASE_URL = "http://localhost:3000/api/clients";
+  BASE_URL = "/api/clients";
 
   constructor() { }
 

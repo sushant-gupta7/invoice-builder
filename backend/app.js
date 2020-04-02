@@ -15,7 +15,7 @@ mongoose
     console.log(err);
   });
 
-const PORT = process.env.port || devConfig.port;
+const PORT = process.env.PORT || devConfig.port;
 const app = express();
 setGlobalMiddleware(app);
 app.use("/api", routes);
@@ -30,13 +30,11 @@ app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });
 
-
-
 const io = require("socket.io").listen(5000);
 
-io.on('connection', (socket) => {
-    console.log('user connected');
-    socket.on('new-message', (message) => {
-        io.emit('emit-message',message);
-      });
+io.on("connection", socket => {
+  console.log("user connected");
+  socket.on("new-message", message => {
+    io.emit("emit-message", message);
+  });
 });
