@@ -11,7 +11,7 @@
     "serve": "node dist/app.js",
     "buildclient": "ng build",
     "runclient": "npm start",
-    "devstart": "nodemon backend/app.js --exec babel-node --presets env",
+    "devstart": "node backend/app.js --exec babel-node --presets env",
     "dev": "npm run buildclient & concurrently --kill-others \"npm run runclient\" \"npm run devstart\"",
     "build-serve": "node --max_old_space_size=8048 ./node_modules/@angular/cli/bin/ng serve",
     "heroku-postinstall": "ng build --prod"
