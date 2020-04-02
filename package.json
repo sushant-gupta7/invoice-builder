@@ -3,16 +3,17 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "runclient": "npm start",
-    "devstart": "nodemon backend/app.js --exec babel-node --presets env",
-    "serve": "nodemon backend ng serve",
-    "start": "node backend",
-    "dev": "concurrently \"mongod\" \"ng serve --proxy-config proxy.conf.json --open\" \"tsc -w -p backend\" \"nodemon dist/app.js\"",
-    "build": "ng build --prod",
+    "start": " ng serve --max_old_space_size=2560",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "heroku-postbuild": "ng build --prod"
+    "build": " babel backend -d dist --source-maps --max_old_space_size=2560",
+    "serve": "node dist/app.js",
+    "buildclient": "ng build",
+    "runclient": "npm start",
+    "devstart": "nodemon backend/app.js --exec babel-node --presets env",
+    "dev": "npm run buildclient & concurrently --kill-others \"npm run runclient\" \"npm run devstart\"",
+    "heroku-postinstall": "ng build --prod"
   },
   "private": true,
   "dependencies": {
