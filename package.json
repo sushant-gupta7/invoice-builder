@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve --proxy-config proxy-config.json",
+    "start": "ng serve",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
@@ -12,7 +12,8 @@
     "buildclient": "ng build",
     "runclient": "npm start",
     "devstart": "nodemon backend/app.js --exec babel-node --presets env",
-    "dev": "concurrently --kill-others \"npm run runclient\" \"npm run devstart\""
+    "dev": "npm run buildclient & concurrently --kill-others \"npm run runclient\" \"npm run devstart\"",
+    "heroku-postinstall": "ng build --prod"
   },
   "private": true,
   "dependencies": {
