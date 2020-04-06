@@ -9,21 +9,16 @@ const { configureGithubStrategy } = require("./passport-github");
 const { devConfig } = require("../config/env/development");
 const session = require("express-session");
 const User = require("../resources/users/model/users.model");
- module.exports.setGlobalMiddleware = app => {
-
+module.exports.setGlobalMiddleware = app => {
   // var distDir = __dirname + "../../../dist/";
   // app.use(express.static(distDir));
 
   if (process.env.NODE_ENV === "production") {
-
     app.use(express.static("build"));
- 
- 
     app.get("*", (req, res) => {
-         res.sendFile(path.resolve(__dirname,  "build", "index.html"));
-     });
- 
-   }
+      res.sendFile(path.resolve(__dirname, "build", "index.html"));
+    });
+  }
 
   app.use(express.json());
   app.use(express.urlencoded({ extended: true }));
