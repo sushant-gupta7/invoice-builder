@@ -5,7 +5,7 @@
 
     "ng": "ng",
     "serve": "ng serve",
-    "start": "nodemon backend/app.js --exec babel-node --presets env",
+    "start": "node backend/app.js --exec babel-node --presets env",
     "build": "ng build --prod",
     "test": "ng test",
     "lint": "ng lint",
