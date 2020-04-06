@@ -18,7 +18,7 @@ mongoose
   
 
 const PORT = process.env.PORT || 3000;
-// const SOCKET_PORT = process.env.SOCKETPORT || 5000;
+// const SOCKET_PORT = process.env.PORT || 5000;
 const app = express();
 setGlobalMiddleware(app);
 app.use("/api", routes);

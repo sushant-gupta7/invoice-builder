@@ -11,20 +11,7 @@ const session = require("express-session");
 const User = require("../resources/users/model/users.model");
  module.exports.setGlobalMiddleware = app => {
 
-// Choose what fronten framework to serve the dist from
-
-// Choose what fronten framework to serve the dist from
-var distDir = '../../../dist/';
-
-// 
-app.use(express.static(path.join(__dirname, distDir)));
-app.use(/^((?!(api)).)*/, (req, res) => {
-  res.sendFile(path.join(__dirname, distDir + '/index.html'));
-});
-
-console.log(distDir);
-//React server
-app.use(express.static(path.join(__dirname, '../../../node_modules/material-dashboard-react/dist')));
+  app.use(express.static(path.join(__dirname ,'dist')));
 
 
   app.use(express.json());
