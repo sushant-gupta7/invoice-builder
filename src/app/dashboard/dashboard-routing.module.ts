@@ -13,14 +13,14 @@ import { ChatComponentComponent } from '../chat/chat-component/chat-component.co
 const routes: Routes = [
   {
     path: '', component: DashboardComponent, canActivate:[AuthGuardService] ,children: [
-    { path: 'invoices', canActivateChild:[AuthGuardService] ,component: InvoiceListingComponent },
-    { path: 'invoices/new',  canActivateChild:[AuthGuardService] , component: InvoiceFormComponent },
-    { path: 'invoices/view/:id',  canActivateChild:[AuthGuardService] , component: InvoiceViewComponent },
-    { path: 'invoices/:id',  canActivateChild:[AuthGuardService] , component: InvoiceFormComponent },
-    { path: 'clients', canActivateChild:[AuthGuardService] ,component: ClientListingComponent },
-    { path: 'clients/new',  canActivateChild:[AuthGuardService] ,component: ClientFormComponent },
-    { path: 'clients/:id',  canActivateChild:[AuthGuardService] ,component: ClientFormComponent },
-    { path: 'chat',  canActivateChild:[AuthGuardService] ,component: ChatComponentComponent },
+    { path: 'https://chat-app-proj.herokuapp.com/invoices', canActivateChild:[AuthGuardService] ,component: InvoiceListingComponent },
+    { path: 'https://chat-app-proj.herokuapp.com/invoices/new',  canActivateChild:[AuthGuardService] , component: InvoiceFormComponent },
+    { path: 'https://chat-app-proj.herokuapp.com/invoices/view/:id',  canActivateChild:[AuthGuardService] , component: InvoiceViewComponent },
+    { path: 'https://chat-app-proj.herokuapp.com/invoices/:id',  canActivateChild:[AuthGuardService] , component: InvoiceFormComponent },
+    { path: 'https://chat-app-proj.herokuapp.com/clients', canActivateChild:[AuthGuardService] ,component: ClientListingComponent },
+    { path: 'https://chat-app-proj.herokuapp.com/clients/new',  canActivateChild:[AuthGuardService] ,component: ClientFormComponent },
+    { path: 'https://chat-app-proj.herokuapp.com/clients/:id',  canActivateChild:[AuthGuardService] ,component: ClientFormComponent },
+    { path: 'https://chat-app-proj.herokuapp.com/chat',  canActivateChild:[AuthGuardService] ,component: ChatComponentComponent },
     { path: '**',  canActivateChild:[AuthGuardService] ,redirectTo: 'invoices' },
     ]
   }
