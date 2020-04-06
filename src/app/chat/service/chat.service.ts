@@ -10,7 +10,7 @@ export class ChatService {
   socket;
 
   constructor() {
-    this.socket = io(this.url);
+    this.socket = io();
   }
 
   sendMessage(message) {
