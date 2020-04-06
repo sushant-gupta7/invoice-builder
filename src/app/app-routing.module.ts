@@ -7,11 +7,11 @@ import { ResetPasswordComponent } from './auth/component/reset-password/reset-pa
 
 
 const routes: Routes = [
-  {path:'login' , canActivate:[NoAuthGuardService] , component:AuthComponent},
-  {path:'signup' , canActivate:[NoAuthGuardService] ,component:AuthComponent},
-  {path:'reset-password/:token' , canActivate:[NoAuthGuardService] ,component:ResetPasswordComponent},
-  {path:'forgot-password' , canActivate:[NoAuthGuardService] ,component:ForgotPasswordComponent},
-  {path:'dashboard',loadChildren:'./dashboard/dashboard.module#DashboardModule'},
+  {path:'https://chat-app-proj.herokuapp.com/login' , canActivate:[NoAuthGuardService] , component:AuthComponent},
+  {path:'https://chat-app-proj.herokuapp.com/signup' , canActivate:[NoAuthGuardService] ,component:AuthComponent},
+  {path:'https://chat-app-proj.herokuapp.com/reset-password/:token' , canActivate:[NoAuthGuardService] ,component:ResetPasswordComponent},
+  {path:'https://chat-app-proj.herokuapp.com/forgot-password' , canActivate:[NoAuthGuardService] ,component:ForgotPasswordComponent},
+  {path:'https://chat-app-proj.herokuapp.com/dashboard',loadChildren:'./dashboard/dashboard.module#DashboardModule'},
   {path:'**' , canActivate:[NoAuthGuardService] ,redirectTo:'dashboard'},
 ];
 
