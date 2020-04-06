@@ -3,13 +3,14 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
+    "start": "NODE_OPTIONS=--max-old-space-size ng serve",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
     "build": "NODE_OPTIONS=--max-old-space-size=4096 babel backend -d dist --source-maps",
     "serve": "NODE_OPTIONS=--max-old-space-size=4096 node dist/app.js",
     "buildclient": "ng build --prod",
-    "runclient": "npm start",
+    "runclient": "ng serve",
     "devstart": "NODE_OPTIONS=--max-old-space-size=4096 nodemon backend/app.js --exec babel-node --presets env",
     "dev": "npm run buildclient & concurrently --kill-others \"npm run runclient\" \"npm run devstart\"",
     "heroku-postinstall": "ng build --prod"
