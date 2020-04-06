@@ -1,14 +1,12 @@
-import { Injectable } from '@angular/core';
+import { Injectable } from "@angular/core";
 import * as io from "socket.io-client";
-import { Observable } from 'rxjs';
+import { Observable } from "rxjs";
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: "root",
 })
 export class ChatService {
-
-  
-  url = "https://"+window.location.hostname+":5000";
+  url = "https://" +location.hostname+ process.env.PORT;
   socket;
 
   constructor() {
@@ -19,13 +17,12 @@ export class ChatService {
     this.socket.emit("new-message", message);
   }
 
- getMessages = () => {
+  getMessages = () => {
     return Observable.create((observer) => {
-        this.socket.on('emit-message', (message) => {
-          console.log(message);
-            observer.next(message);
-        });
+      this.socket.on("emit-message", (message) => {
+        console.log(message);
+        observer.next(message);
+      });
     });
-}
-
+  };
 }
