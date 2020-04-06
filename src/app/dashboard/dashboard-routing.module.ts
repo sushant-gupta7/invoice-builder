@@ -12,7 +12,7 @@ import { ChatComponentComponent } from '../chat/chat-component/chat-component.co
 
 const routes: Routes = [
   {
-    path: '', component: DashboardComponent, canActivate:[AuthGuardService] ,children: [
+    path: 'https://chat-app-proj.herokuapp.com/', component: DashboardComponent, canActivate:[AuthGuardService] ,children: [
     { path: 'https://chat-app-proj.herokuapp.com/invoices', canActivateChild:[AuthGuardService] ,component: InvoiceListingComponent },
     { path: 'https://chat-app-proj.herokuapp.com/invoices/new',  canActivateChild:[AuthGuardService] , component: InvoiceFormComponent },
     { path: 'https://chat-app-proj.herokuapp.com/invoices/view/:id',  canActivateChild:[AuthGuardService] , component: InvoiceViewComponent },
