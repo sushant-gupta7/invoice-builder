@@ -11,7 +11,7 @@
     "lint": "ng lint",
     "e2e": "ng e2e",
     "dev": "concurrently --kill-others \"npm run start\" \"ng serve\"",
-    "heroku-postbuild": "ng build --prod",
+    "heroku-postbuild": "npm install --prefix client && ng build --prefix client",
     "postinstall": "ng build"
   },
   "private": true,
