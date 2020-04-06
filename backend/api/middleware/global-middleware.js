@@ -15,7 +15,7 @@ export const setGlobalMiddleware = app => {
   app.use(logger("dev"));
   app.use(
     session({
-      secret: devConfig.jwt_secret,
+      secret: process.env.jwt_secret || devConfig.jwt_secret,
       resave: true,
       saveUninitialized: true
     })

@@ -99,7 +99,7 @@ export default {
       if(!user) {
         return res.status(400).json({message:'Could Not Find User'});
       }
-      const token = jwt.sign({ id: user._id }, devConfig.jwt_secret, {
+      const token = jwt.sign({ id: user._id }, process.env.jwt_secret || devConfig.jwt_secret, {
         expiresIn: "1d"
       });
       const resetLink = `

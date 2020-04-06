@@ -7,7 +7,7 @@ import passport from 'passport';
 export const configureJWTStratergy = () =>{
 let opts = {}
 opts.jwtFromRequest = JwtStratergy.ExtractJwt.fromAuthHeaderAsBearerToken();
-opts.secretOrKey = devConfig.jwt_secret;
+opts.secretOrKey = process.env.jwt_secret || devConfig.jwt_secret;
 passport.use(new JwtStratergy.Strategy(opts, function(payload, done) {
     User.findOne({_id: payload.id}, function(err, user) {
         if (err) {

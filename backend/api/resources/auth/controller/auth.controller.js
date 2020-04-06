@@ -5,7 +5,7 @@ import jwt from 'jsonwebtoken';
 import { devConfig } from "../../../config/env/development";
 export default {
   sendJWTToken(req, res) {
-    const token = jwt.sign({ id: req.user }, devConfig.jwt_secret, {
+    const token = jwt.sign({ id: req.user }, process.env.jwt_secret || devConfig.jwt_secret, {
       expiresIn: "1d"
     });
     res.redirect(`${devConfig.fronEndUrl}/dashboard/invoices/?token=${token}`)
