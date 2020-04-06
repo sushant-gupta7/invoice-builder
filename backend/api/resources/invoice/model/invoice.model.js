@@ -1,5 +1,5 @@
-import mongoose from 'mongoose';
-import mongoosePaginate from 'mongoose-paginate'
+const mongoose = require('mongoose');
+const mongoosePaginate = require('mongoose-paginate');
 const schema = mongoose.Schema;
 const InvoiceSchema = new schema({
   item: {type:String , required:true},
@@ -14,4 +14,4 @@ const InvoiceSchema = new schema({
   },
 }, {strict: false});
 InvoiceSchema.plugin(mongoosePaginate);
-export default mongoose.model('Invoice' , InvoiceSchema)
+module.exports =  mongoose.model('Invoice' , InvoiceSchema)

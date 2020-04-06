@@ -1,9 +1,6 @@
-import express from 'express' ;
-import { S3Upload, upload, IMG_DIR_CONSTS } from "../../../config/utils/uploadimage";
-
-
-import invoiceController from '../../invoice/controller/invoice.controller';
-import passport from 'passport';
+const express = require('express');
+const invoiceController = require('../../invoice/controller/invoice.controller');
+const passport = require('passport');
 const router = express.Router();
 
 // Invoices

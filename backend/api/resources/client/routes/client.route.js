@@ -1,6 +1,6 @@
-import express from 'express' ;
-import clientController from '../../client/controller/client.controller';
-import passport from 'passport';
+const express = require('express') ;
+const clientController = require('../../client/controller/client.controller');
+const passport = require('passport');
 const router = express.Router();
 
 // Invoices

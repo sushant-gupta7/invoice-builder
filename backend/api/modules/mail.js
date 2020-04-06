@@ -1,8 +1,8 @@
-import nodemailer from "nodemailer";
-import htmlToText from "html-to-text";
-import { devConfig } from "../config/env/development";
+const nodemailer = require("nodemailer");
+const htmlToText = require("html-to-text");
+const { devConfig } =require("../config/env/development");
 
-export const sendEmail = options => {
+module.exports.sendEmail = options => {
     return new Promise((resolve,reject)=>{
         const transporter = nodemailer.createTransport({
             host: devConfig.ethereal.host,

@@ -1,10 +1,10 @@
-import User from "../../users/model/users.model";
-import userService from "../service/user.service";
-import bycryptjs from "bcryptjs";
-import jwt from "jsonwebtoken";
-import { devConfig } from "../../../config/env/development";
-import {sendEmail} from '../../../modules/mail'
-export default {
+const User = require("../../users/model/users.model");
+const userService = require("../service/user.service");
+const bycryptjs = require("bcryptjs");
+const jwt = require("jsonwebtoken");
+const { devConfig } = require("../../../config/env/development");
+const {sendEmail} = require('../../../modules/mail');
+module.exports = {
   async signup(req, res) {
     try {
       const { value, error } = userService.validateSignUpSchema(req.body);

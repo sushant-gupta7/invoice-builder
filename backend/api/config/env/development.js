@@ -1,4 +1,4 @@
-export const devConfig = {
+ module.exports.devConfig = {
     port:3000,
     database: 'mongodb+srv://Sushant-gupta7:sushant7@cluster0-hv5jx.mongodb.net/test',
     jwt_secret: 'myproject',

@@ -1,8 +1,8 @@
-import express from 'express';
-import invoiceRoute from './resources/invoice/routes/invoice.route';
-import clientRoute from './resources/client/routes/client.route';
-import userRoute from './resources/users/routes/users.route';
-import authRoute from './resources/auth/routes/auth.route';
+const express = require('express');
+const invoiceRoute = require('./resources/invoice/routes/invoice.route');
+const clientRoute = require('./resources/client/routes/client.route');
+const userRoute = require('./resources/users/routes/users.route');
+const authRoute = require('./resources/auth/routes/auth.route');
 
 const router = express.Router();
 router.use('/invoices' , invoiceRoute);

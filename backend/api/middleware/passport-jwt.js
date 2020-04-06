@@ -1,10 +1,10 @@
 
-import JwtStratergy from 'passport-jwt';
-import {devConfig} from '../config/env/development';
-import User from '../resources/users/model/users.model';
-import passport from 'passport';
+const JwtStratergy = require('passport-jwt');
+const {devConfig} = require('../config/env/development');
+const User = require('../resources/users/model/users.model');
+const passport = require('passport');
 
-export const configureJWTStratergy = () =>{
+module.exports.configureJWTStratergy = () =>{
 let opts = {}
 opts.jwtFromRequest = JwtStratergy.ExtractJwt.fromAuthHeaderAsBearerToken();
 opts.secretOrKey = process.env.jwt_secret || devConfig.jwt_secret;

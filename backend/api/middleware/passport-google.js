@@ -1,9 +1,9 @@
-import passport from "passport";
-import GoogleStrategy from "passport-google-oauth2";
-import { devConfig } from "../config/env/development";
-import User from "../resources/users/model/users.model";
+const passport = require("passport");
+const GoogleStrategy = require("passport-google-oauth2");
+const { devConfig } = require("../config/env/development");
+const User = require("../resources/users/model/users.model");
 
-export const configureGoogleDtrategy = () => {
+module.exports.configureGoogleDtrategy = () => {
   passport.use(
     new GoogleStrategy.Strategy(
       {

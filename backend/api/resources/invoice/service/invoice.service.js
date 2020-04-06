@@ -1,5 +1,5 @@
-import joi from "@hapi/joi";
-export default {
+const joi = require("@hapi/joi");
+module.exports = {
   validateInvoiceCreateSchema(body) {
     const schema = joi.object().keys({
       item: joi.string().required(),

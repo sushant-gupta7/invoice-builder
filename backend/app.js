@@ -1,7 +1,7 @@
-import express from "express";
-import mongoose from "mongoose";
-import { setGlobalMiddleware } from "./api/middleware/global-middleware";
-import routes from "../backend/api/index.route";
+const express = require("express");
+const mongoose = require("mongoose");
+const { setGlobalMiddleware } = require("./api/middleware/global-middleware");
+const routes = require("../backend/api/index.route");
 
 // mongoose.Promise = global.Promise;
 const DATABASE = process.env.MONGO_URI || 'mongodb+srv://Sushant-gupta7:sushant7@cluster0-hv5jx.mongodb.net/test'

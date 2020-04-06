@@ -1,14 +1,14 @@
-import express from "express";
-import logger from "morgan";
-import cors from "cors";
-import passport from "passport";
-import { configureJWTStratergy } from "./passport-jwt";
-import { configureGoogleDtrategy } from "./passport-google";
-import { configureGithubStrategy } from "./passport-github";
-import { devConfig } from "../config/env/development";
-import session from "express-session";
-import User from "../resources/users/model/users.model";
-export const setGlobalMiddleware = app => {
+const express = require("express");
+const logger = require("morgan");
+const cors = require("cors");
+const passport = require("passport");
+const { configureJWTStratergy } = require("./passport-jwt");
+const { configureGoogleDtrategy } = require("./passport-google");
+const { configureGithubStrategy } = require("./passport-github");
+const { devConfig } = require("../config/env/development");
+const session = require("express-session");
+const User = require("../resources/users/model/users.model");
+ module.exports.setGlobalMiddleware = app => {
   app.use(express.json());
   app.use(express.urlencoded({ extended: true }));
   app.use(cors());

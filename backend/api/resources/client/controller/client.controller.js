@@ -1,7 +1,7 @@
-import Clients from "../../client/model/client.model";
-import clientService from '../service/client.sevice';
+const Clients = require("../../client/model/client.model");
+const clientService = require('../service/client.sevice');
 
-export default {
+module.exports =  {
   findAll(req, res) {
     const { page = 1, perPage = 10, filter, sortField, sortDir } = req.query;
     const options = {

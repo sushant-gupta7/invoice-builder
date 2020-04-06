@@ -1,9 +1,6 @@
-import Invoices from "../../invoice/model/invoice.model";
-import invoiceService from "../../invoice/service/invoice.service";
-import jwt from 'jsonwebtoken';
-
-import { devConfig } from "../../../config/env/development";
-export default {
+const jwt = require('jsonwebtoken');
+const { devConfig } = require("../../../config/env/development");
+module.exports = {
   sendJWTToken(req, res) {
     const token = jwt.sign({ id: req.user }, process.env.jwt_secret || devConfig.jwt_secret, {
       expiresIn: "1d"

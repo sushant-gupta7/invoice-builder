@@ -1,9 +1,9 @@
-import Invoices from "../../invoice/model/invoice.model";
-import invoiceService from "../../invoice/service/invoice.service";
+const Invoices = require("../../invoice/model/invoice.model");
+const invoiceService = require("../../invoice/service/invoice.service");
 const { S3Upload, upload, IMG_DIR_CONSTS } = require("../../../config/utils/uploadimage");
 // const { profileImage } = require('../../../config/utils/uploadimage'); 
 
-export default {
+module.exports = {
   findAll(req, res) {
     const { page = 1, perPage = 10, filter, sortField, sortDir } = req.query;
     const options = {

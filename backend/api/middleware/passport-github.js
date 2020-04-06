@@ -1,9 +1,9 @@
-import passport from "passport";
-import GithubStrategy from "passport-github";
-import { devConfig } from "../config/env/development";
-import User from "../resources/users/model/users.model";
+const passport = require("passport");
+const GithubStrategy = require("passport-github");
+const { devConfig } = require("../config/env/development");
+const User = require("../resources/users/model/users.model");
 
-export const configureGithubStrategy = () => {
+module.exports.configureGithubStrategy = () => {
   passport.use(
     new GithubStrategy.Strategy(
       {

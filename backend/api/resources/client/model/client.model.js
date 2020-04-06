@@ -1,5 +1,5 @@
-import mongoose from 'mongoose';
-import mongoosePaginate from 'mongoose-paginate'
+const mongoose = require('mongoose');
+const mongoosePaginate = require('mongoose-paginate');
 const schema = mongoose.Schema;
 const ClientSchema = new schema({
   firstName: {type:String , required:true},
@@ -8,4 +8,4 @@ const ClientSchema = new schema({
   mobile: {type:String , required:true},
 }, {strict: false});
 ClientSchema.plugin(mongoosePaginate);
-export default mongoose.model('Client' , ClientSchema)
+module.exports = mongoose.model('Client' , ClientSchema);

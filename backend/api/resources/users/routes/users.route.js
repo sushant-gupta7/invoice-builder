@@ -1,6 +1,6 @@
-import express from 'express' ;
-import userController from '../../users/controller/users.controller';
-import passport from 'passport';
+const express = require('express') ;
+const userController = require('../../users/controller/users.controller');
+const passport = require('passport');
 const router = express.Router();
 
 // Invoices
