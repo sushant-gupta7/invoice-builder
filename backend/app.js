@@ -4,21 +4,21 @@ const { setGlobalMiddleware } = require("./api/middleware/global-middleware");
 const routes = require("../backend/api/index.route");
 
 // mongoose.Promise = global.Promise;
-const DATABASE = process.env.MONGO_URI || 'mongodb+srv://Sushant-gupta7:sushant7@cluster0-hv5jx.mongodb.net/test'
+const DATABASE =
+  process.env.MONGO_URI ||
+  "mongodb+srv://Sushant-gupta7:sushant7@cluster0-hv5jx.mongodb.net/test";
 mongoose
   .connect(DATABASE, {
     useNewUrlParser: true,
-    useUnifiedTopology: true
+    useUnifiedTopology: true,
   })
   .then(console.log("Mongo DB Connected"))
-  .catch(err => {
+  .catch((err) => {
     console.log(err);
   });
 
-  
-
 const PORT = process.env.PORT || 3000;
-const SOCKET_PORT = process.env.PORT || 5000;
+const SOCKET_PORT = 'https://"' + window.location.hostname + ":5000" || 5000;
 const app = express();
 setGlobalMiddleware(app);
 app.use("/api", routes);
@@ -35,9 +35,9 @@ app.listen(PORT, () => {
 
 const io = require("socket.io").listen(SOCKET_PORT);
 
-io.on("connection", socket => {
+io.on("connection", (socket) => {
   console.log("user connected");
-  socket.on("new-message", message => {
+  socket.on("new-message", (message) => {
     io.emit("emit-message", message);
   });
 });
