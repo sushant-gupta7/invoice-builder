@@ -9,11 +9,11 @@
     "e2e": "ng e2e",
     "build": "babel backend -d dist --source-maps",
     "serve": "node dist/app.js",
-    "buildclient": "ng build",
+    "buildclient": "ng build --prod",
     "runclient": "npm start",
     "devstart": "nodemon backend/app.js --exec babel-node --presets env",
     "dev": "npm run buildclient & concurrently --kill-others \"npm run runclient\" \"npm run devstart\"",
-    "heroku-postinstall": "ng build --prod"
+    "heroku-postinstall": "ng build --prod --max_old_space_size=2000000"
   },
   "private": true,
   "dependencies": {
