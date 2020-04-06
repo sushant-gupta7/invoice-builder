@@ -8,13 +8,13 @@ export class AuthService {
   headers = new HttpHeaders({
     "Content-Type": "application/json"
   });
-  BASE_URL = "https://chat-app-proj.herokuapp.com/api/users";
-  GOOGLE_URL = "https://chat-app-proj.herokuapp.com/api/auth/google";
-  GITHUB_URL = "https://chat-app-proj.herokuapp.com/api/auth/github";
-  AUTHENTICATE_URL = "https://chat-app-proj.herokuapp.com/api/auth/authenticate";
-  LOGOUT_URL = "https://chat-app-proj.herokuapp.com/api/auth/logout";
-  FORGOT_PASSWORD_URL = "https://chat-app-proj.herokuapp.com/api/users/forgot-password";
-  RESET_PASSWORD_URL = "https://chat-app-proj.herokuapp.com/api/users/reset-password";
+  BASE_URL = "/api/users";
+  GOOGLE_URL = "/api/auth/google";
+  GITHUB_URL = "/api/auth/github";
+  AUTHENTICATE_URL = "/api/auth/authenticate";
+  LOGOUT_URL = "/api/auth/logout";
+  FORGOT_PASSWORD_URL = "/api/users/forgot-password";
+  RESET_PASSWORD_URL = "/api/users/reset-password";
   constructor() {}
 
   login(loginObject) {
