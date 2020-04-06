@@ -5,8 +5,9 @@ import { setGlobalMiddleware } from "./api/middleware/global-middleware";
 import routes from "../backend/api/index.route";
 
 // mongoose.Promise = global.Promise;
+DATABASE = process.env.DATABASE || 'mongodb+srv://Sushant-gupta7:sushant7@cluster0-hv5jx.mongodb.net/test'
 mongoose
-  .connect(devConfig.database, {
+  .connect(DATABASE, {
     useNewUrlParser: true,
     useUnifiedTopology: true
   })
@@ -15,7 +16,8 @@ mongoose
     console.log(err);
   });
 
-const PORT = process.env.PORT || devConfig.port;
+const PORT = process.env.PORT || 3000;
+const SOCKET_PORT = process.env.SOCKETPORT || 5000;
 const app = express();
 setGlobalMiddleware(app);
 app.use("/api", routes);
@@ -30,7 +32,7 @@ app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });
 
-const io = require("socket.io").listen(5000);
+const io = require("socket.io").listen(SOCKET_PORT);
 
 io.on("connection", socket => {
   console.log("user connected");
