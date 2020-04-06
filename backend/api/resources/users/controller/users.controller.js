@@ -104,7 +104,7 @@ export default {
       });
       const resetLink = `
       <h4>Please click on the rest link to reset the password</h4>
-      <a href="${devConfig.fronEndUrl}reset-password?token=${token}">Reset Password</a>
+      <a href="${process.env.frontEndUrl || devConfig.fronEndUrl}reset-password?token=${token}">Reset Password</a>
       `
         await sendEmail({
           html:resetLink,

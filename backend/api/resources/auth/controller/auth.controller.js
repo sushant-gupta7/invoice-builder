@@ -8,7 +8,7 @@ export default {
     const token = jwt.sign({ id: req.user }, process.env.jwt_secret || devConfig.jwt_secret, {
       expiresIn: "1d"
     });
-    res.redirect(`${devConfig.fronEndUrl}/dashboard/invoices/?token=${token}`)
+    res.redirect(`${process.env.frontEndUrl || devConfig.fronEndUrl}/dashboard/invoices/?token=${token}`)
     // return res.status(200).json({message: "User Found",token:token , success:true});
   },
   authenticate(req,res) {

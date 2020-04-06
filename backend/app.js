@@ -1,5 +1,4 @@
 import express from "express";
-import { devConfig } from "./api/config/env/development";
 import mongoose from "mongoose";
 import { setGlobalMiddleware } from "./api/middleware/global-middleware";
 import routes from "../backend/api/index.route";
