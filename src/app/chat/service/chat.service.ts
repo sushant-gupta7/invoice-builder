@@ -10,10 +10,10 @@ export class ChatService {
   socket;
 
   constructor() {
-    this.socket = io();
+    this.socket = io('https://chat-app-proj.herokuapp.com/');
   }
 
-  
+
   sendMessage(message) {
     this.socket.emit("new-message", message);
   }

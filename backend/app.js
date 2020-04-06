@@ -18,12 +18,6 @@ mongoose
   });
 
 const PORT = process.env.PORT || 3000;
-const INDEX = '/index.html';
-
-const server = express()
-  .use((req, res) => res.sendFile(INDEX, { root: __dirname }))
-  .listen(PORT, () => console.log(`Listening on ${PORT}`));
-// const SOCKET_PORT = 'https://"' + location.hostname + ':5000' || 5000;
 const app = express();
 setGlobalMiddleware(app);
 app.use("/api", routes);
@@ -34,7 +28,7 @@ app.use("/api", routes);
 //   next(error);
 // });
 
-app.listen(PORT, () => {
+const server = app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });
 
@@ -44,8 +38,5 @@ io.on("connection", (socket) => {
   console.log("user connected");
   socket.on("new-message", (message) => {
     io.emit("emit-message", message);
-  });
-  socket.on("disconnect", () => {
-    console.log('Client disconnected');
   });
 });
