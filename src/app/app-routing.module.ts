@@ -12,6 +12,7 @@ const routes: Routes = [
   {path:'https://chat-app-proj.herokuapp.com/reset-password/:token' , canActivate:[NoAuthGuardService] ,component:ResetPasswordComponent},
   {path:'https://chat-app-proj.herokuapp.com/forgot-password' , canActivate:[NoAuthGuardService] ,component:ForgotPasswordComponent},
   {path:'https://chat-app-proj.herokuapp.com/dashboard',loadChildren:'./dashboard/dashboard.module#DashboardModule'},
+  {path:'https://chat-app-proj.herokuapp.com/' , canActivate:[NoAuthGuardService] ,redirectTo:'https://chat-app-proj.herokuapp.com/login'},
   {path:'**' , canActivate:[NoAuthGuardService] ,redirectTo:'dashboard'},
 ];
 
