@@ -6,7 +6,7 @@ import { Observable } from "rxjs";
   providedIn: "root",
 })
 export class ChatService {
-  url = "https://" +location.hostname+ ':5000';
+  // url = "https://" +location.hostname+ ':5000';
   socket;
 
   constructor() {
