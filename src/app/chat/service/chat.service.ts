@@ -13,6 +13,7 @@ export class ChatService {
     this.socket = io();
   }
 
+  
   sendMessage(message) {
     this.socket.emit("new-message", message);
   }
