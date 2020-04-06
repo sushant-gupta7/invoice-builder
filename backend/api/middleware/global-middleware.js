@@ -24,7 +24,7 @@ module.exports.setGlobalMiddleware = app => {
   app.use(logger("dev"));
   app.use(
     session({
-      secret: process.env.jwt_secret || devConfig.jwt_secret,
+      secret: process.env.jWT_SECRET || devConfig.jwt_secret,
       resave: true,
       saveUninitialized: true
     })
