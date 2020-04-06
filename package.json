@@ -6,13 +6,13 @@
     "serve": "ng serve",
     "start": "node --experimental-modules backend/app.js ",
     "start:dev": "nodemon backend/app.js --exec babel-node --presets env",
-    "build": "ng build --prod",
+    "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
     "dev": "concurrently --kill-others \"npm run start\" \"ng serve\"",
-    "heroku-postbuild": "npm install && ng build",
-    "postinstall": "ng build"
+    "heroku-postbuild": "ng build --prod",
+    "postinstall": "ng build --prod"
   },
   "private": true,
   "dependencies": {

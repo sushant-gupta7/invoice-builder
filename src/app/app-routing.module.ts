@@ -7,12 +7,12 @@ import { ResetPasswordComponent } from './auth/component/reset-password/reset-pa
 
 
 const routes: Routes = [
-  {path:'/login' , canActivate:[NoAuthGuardService] , component:AuthComponent},
-  {path:'/signup' , canActivate:[NoAuthGuardService] ,component:AuthComponent},
-  {path:'/reset-password/:token' , canActivate:[NoAuthGuardService] ,component:ResetPasswordComponent},
-  {path:'/forgot-password' , canActivate:[NoAuthGuardService] ,component:ForgotPasswordComponent},
-  {path:'/dashboard',loadChildren:'./dashboard/dashboard.module#DashboardModule'},
-  {path:'' , canActivate:[NoAuthGuardService] ,redirectTo:'/login'},
+  {path:'login' , canActivate:[NoAuthGuardService] , component:AuthComponent},
+  {path:'signup' , canActivate:[NoAuthGuardService] ,component:AuthComponent},
+  {path:'reset-password/:token' , canActivate:[NoAuthGuardService] ,component:ResetPasswordComponent},
+  {path:'forgot-password' , canActivate:[NoAuthGuardService] ,component:ForgotPasswordComponent},
+  {path:'dashboard',loadChildren:'./dashboard/dashboard.module#DashboardModule'},
+  {path:'' , canActivate:[NoAuthGuardService] ,redirectTo:'login',pathMatch: 'full'},
   {path:'**' , canActivate:[NoAuthGuardService] ,redirectTo:'dashboard'},
 ];
 
