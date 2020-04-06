@@ -10,7 +10,7 @@ export class ClientService {
     "Accept": "application/json",
     "Authorization":  `bearer ${localStorage.getItem('token')}`
   };
-  BASE_URL = "/api/clients";
+  BASE_URL = "https://chat-app-proj.herokuapp.com/api/clients";
 
   constructor() { }
 
