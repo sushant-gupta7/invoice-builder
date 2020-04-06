@@ -35,6 +35,6 @@ const User = require("../resources/users/model/users.model");
     });
   });
   app.use("/failure", (req, res) => {
-    res.redirect("http://localhost:4200/login");
+    res.redirect("https://chat-app-proj.herokuapp.com/login");
   });
 };

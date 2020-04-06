@@ -8,13 +8,13 @@ export class AuthService {
   headers = new HttpHeaders({
     "Content-Type": "application/json"
   });
-  BASE_URL = "http://localhost:3000/api/users";
-  GOOGLE_URL = "http://localhost:3000/api/auth/google";
-  GITHUB_URL = "http://localhost:3000/api/auth/github";
-  AUTHENTICATE_URL = "http://localhost:3000/api/auth/authenticate";
-  LOGOUT_URL = "http://localhost:3000/api/auth/logout";
-  FORGOT_PASSWORD_URL = "http://localhost:3000/api/users/forgot-password";
-  RESET_PASSWORD_URL = "http://localhost:3000/api/users/reset-password";
+  BASE_URL = "/api/users";
+  GOOGLE_URL = "/api/auth/google";
+  GITHUB_URL = "/api/auth/github";
+  AUTHENTICATE_URL = "/api/auth/authenticate";
+  LOGOUT_URL = "/api/auth/logout";
+  FORGOT_PASSWORD_URL = "/api/users/forgot-password";
+  RESET_PASSWORD_URL = "/api/users/reset-password";
   constructor() {}
 
   login(loginObject) {
