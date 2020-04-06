@@ -3,8 +3,6 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "webpacker": "node --max_old_space_size=4096 node_modules/.bin/webpack-dev-server --progress --color --config config/webpack/development.js",
-    "start": "ng serve",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
