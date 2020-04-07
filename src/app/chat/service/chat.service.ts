@@ -6,11 +6,10 @@ import { Observable } from "rxjs";
   providedIn: "root",
 })
 export class ChatService {
-  url = "http://"+window.location.hostname+':5000';
   socket;
 
   constructor() {
-    this.socket = io(this.url);
+    this.socket = io();
   }
 
   joinRoom(data) {
