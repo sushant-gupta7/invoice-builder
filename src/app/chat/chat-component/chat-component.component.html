@@ -1,41 +1,56 @@
-<!-- <h3>Realtime Chat Application</h3>
-<mat-card class="example-container">
-    <mat-form-field>
-      <mat-label>Username</mat-label>
-      <input matInput type="text">
-    </mat-form-field>
-    <br>
-    <mat-form-field>
-      <mat-label>Select Room</mat-label>
-      <mat-select>
-        <mat-option value="lobby">Lobby</mat-option>
-        <mat-option value="hall">Hall</mat-option>
-        <mat-option value="deluxe">Deluxe</mat-option>
-      </mat-select>
-    </mat-form-field>
-    <br>
-    
-    <button
-    mat-raised-button
-    type="submit"
-    color="accent">
+
+<mat-card class="card_main_container">
+  <mat-form-field>
+    <mat-label>Username</mat-label>
+    <input matInput type="text" [(ngModel)]="user" />
+  </mat-form-field>
+  <br />
+  <mat-form-field>
+    <mat-label>Select Room</mat-label>
+    <mat-select  [(ngModel)]="room">
+      <mat-option value="lobby">Lobby</mat-option>
+      <mat-option value="hall">Hall</mat-option>
+      <mat-option value="deluxe">Deluxe</mat-option>
+    </mat-select>
+  </mat-form-field>
+  <br />
+
+  <button mat-raised-button type="submit" color="accent" (click)="join()">
     Join
   </button>
-    <button
-    mat-raised-button
-    type="submit"
-    color="accent">
+  <button mat-raised-button type="submit" color="accent" (click)="leave()">
     Leave
   </button>
 </mat-card>
-<br>
-<mat-card>
 
-</mat-card> -->
+<mat-card class="card_main_container2">
+  <div *ngFor="let message of messages">
+    {{ message?.user }}: {{message?.message}}
+  </div>
+</mat-card>
 
-<div *ngFor="let message of messages">
+<!-- <div *ngFor="let message of messages">
     {{message}}
-</div>
+</div> -->
+<br />
+<mat-card class="example-container">
+  <mat-form-field style="width: 400px;">
+    <mat-label>Send Message</mat-label>
+    <input
+      matInput
+      type="text"
+      [(ngModel)]="message"
+      (keyup)="$event.keyCode == 13 && sendMessage()"
+    />
+  </mat-form-field>
 
-<input [(ngModel)]="message" (keyup)="$event.keyCode == 13 && sendMessage()" />
-<button (click)="sendMessage()">Send</button>
+  <button
+    mat-raised-button
+    type="submit"
+    color="primary"
+    (click)="sendMessage()"
+    style="margin-left: 5%;"
+  >
+    Send
+  </button>
+</mat-card>

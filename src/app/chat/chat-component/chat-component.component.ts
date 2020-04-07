@@ -8,23 +8,46 @@ import { ChatService } from "../service/chat.service";
 })
 export class ChatComponentComponent implements OnInit {
   message: string;
-  messages: string[] = [];
+  user: string;
+  room: string;
+  messages: any[] = [];
 
   constructor(private chatService: ChatService) {
+    this.getUsersJoined();
     this.getAllMessages();
+    this.getUsersLeaving();
   }
 
   ngOnInit() {}
 
+  getUsersJoined() {
+    this.chatService.newUserJoined().subscribe(data=>{
+      this.messages.push(data);
+    })
+  }
+
+  getUsersLeaving() {
+    this.chatService.userLeftRoom().subscribe(data=>{
+      this.messages.push(data);
+    })
+  }
+
   getAllMessages() {
-    this.chatService.getMessages().subscribe((message: string) => {
-      this.messages.push(message);
-      console.log(this.messages);
+    this.chatService.newMessageRecieved().subscribe(data => {
+      this.messages.push(data);
     });
   }
 
   sendMessage() {
-    this.chatService.sendMessage(this.message);
+    this.chatService.sendMessage({user:this.user,room:this.room,message:this.message});
     this.message = "";
+  }
+
+  join() {
+    this.chatService.joinRoom({user:this.user,room:this.room});
+  }
+
+  leave() {
+    this.chatService.leaveRoom({user:this.user,room:this.room});
   }
 }

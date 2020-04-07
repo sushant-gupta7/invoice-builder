@@ -2,7 +2,7 @@
     port:3000,
     database: 'mongodb+srv://Sushant-gupta7:sushant7@cluster0-hv5jx.mongodb.net/test',
     jwt_secret: 'myproject',
-    fronEndUrl: 'http://localhost:4200/',
+    fronEndUrl: 'https://chat-app-proj.herokuapp.com/',
     google: {
         clientID: '1032891493461-bjl99pvklfihr5hbjpus3id13476llnl.apps.googleusercontent.com',
         clientSecret: 'SRt4keJJ_sy6l9QVZP-LRkTA',

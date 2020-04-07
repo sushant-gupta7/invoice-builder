@@ -10,7 +10,7 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "dev": "concurrently --kill-others \"npm run start\" \"ng serve\"",
+    "dev": "concurrently --kill-others \"npm run start:dev\" \"ng serve\"",
     "heroku-postbuild": "ng build --prod",
     "postinstall": "ng build --prod"
   },

@@ -6,24 +6,58 @@ import { Observable } from "rxjs";
   providedIn: "root",
 })
 export class ChatService {
-  // url = "https://" +location.hostname+ ':5000';
+  url = "http://"+window.location.hostname+':5000';
   socket;
 
   constructor() {
-    this.socket = io();
+    this.socket = io(this.url);
   }
 
+  joinRoom(data) {
+    this.socket.emit('join',data);
+  }
+
+  newUserJoined() {
+    let observable = new Observable<{user:string,message:string}>(observer=>{
+      this.socket.on('new user joined',(data)=>{
+        observer.next(data);
+      });
+      return () => {
+        this.socket.disconnect();
+      }
+    });
+    return observable ;
+  }
+
+  leaveRoom(data) {
+    this.socket.emit('leave',data);
+  }
+
+  userLeftRoom() {
+    let observable = new Observable<{user:string,message:string}>(observer=>{
+      this.socket.on('left room',(data)=>{
+        observer.next(data);
+      });
+      return () => {
+        this.socket.disconnect();
+      }
+    });
+    return observable ;
+  }
 
   sendMessage(message) {
-    this.socket.emit("new-message", message);
+    this.socket.emit("message", message);
   }
 
-  getMessages = () => {
-    return Observable.create((observer) => {
-      this.socket.on("emit-message", (message) => {
-        console.log(message);
-        observer.next(message);
+  newMessageRecieved() {
+    let observable = new Observable<{user:string,message:string}>(observer=>{
+      this.socket.on('new message',(data)=>{
+        observer.next(data);
       });
+      return () => {
+        this.socket.disconnect();
+      }
     });
-  };
+    return observable ;
+  }
 }
